@@ -1,18 +1,19 @@
 <?php 
 
+// Basic setup the theme
 function basic_setting(){
 	
 	add_theme_support('title-tag');
 	add_theme_support('custom-background');
 	add_theme_support('post-thumbnails');
 	
-	
+	// Register Menu
 	register_nav_menus(array(
 		'main' => 'main-menu',
 		'footer' => 'footer-menu',
 	));
 	
-	
+	// Register slider
 	register_post_type('slide',array(
 		'labels' => array(
 			'name' => 'Slider',
@@ -24,6 +25,7 @@ function basic_setting(){
 		'menu_icon'   => 'dashicons-products',
 	));
 
+	// About use section
 	register_post_type('about',array(
 		'labels' => array(
 			'name' => 'About',
@@ -35,7 +37,7 @@ function basic_setting(){
 		'menu_icon'   => 'dashicons-book',
 	));
 
-
+	// Register portfolio
 	register_post_type('portfolio',array(
 		'labels' => array(
 			'name' => 'portfolio',
@@ -47,6 +49,7 @@ function basic_setting(){
 		'menu_icon'   => 'dashicons-phone',
 	));
 	
+	// Portfolio with custom taxonomy
 	register_taxonomy('portfolio-catagories','portfolio',array(
 		'labels' => array(
 			'name' => 'Portfolio',
@@ -68,7 +71,7 @@ function basic_setting(){
 add_action('after_setup_theme','basic_setting');
 
 
-
+// Sidebar register funcation
 function sidebar_widget_area(){
 	
 	register_sidebar(array(
@@ -90,6 +93,7 @@ function sidebar_widget_area(){
 		'before_title' => '<h2 class="widgets_title">',
 		'after_title' => '</h2>',
 	));
+
 	register_sidebar(array(
 		'name' => 'Footer second Sidebar',
 		'id' => 'footer-second',
@@ -99,6 +103,7 @@ function sidebar_widget_area(){
 		'before_title' => '<h2 class="widgets_title">',
 		'after_title' => '</h2>',
 	));
+
 	register_sidebar(array(
 		'name' => 'Footer third Sidebar',
 		'id' => 'footer-third',
@@ -110,35 +115,34 @@ function sidebar_widget_area(){
 	));
 }
 add_action('widgets_init','sidebar_widget_area');
-	function css_enqueue(){
-		
-		wp_register_style('awesome',get_template_directory_uri().'/css/font-awesome.min.css');
-		wp_register_style('normalize',get_template_directory_uri().'/css/normalize.css');
-		wp_register_style('slicknav',get_template_directory_uri().'/css/slicknav.css');
-		wp_register_style('responsiveslides',get_template_directory_uri().'/css/responsiveslides.css');
-		wp_register_style('responsive',get_template_directory_uri().'/css/responsive.css');
-		
-		
-		wp_enqueue_style('awesome');
-		wp_enqueue_style('normalize');
-		wp_enqueue_style('slicknav');
-		wp_enqueue_style('responsiveslides');
-		wp_enqueue_style('responsive');
-		
-	}
-	add_action('wp_enqueue_scripts','css_enqueue');
+
+// CSS and JS file load from here
+function css_enqueue(){
+	
+	wp_register_style('awesome',get_template_directory_uri().'/css/font-awesome.min.css');
+	wp_register_style('normalize',get_template_directory_uri().'/css/normalize.css');
+	wp_register_style('slicknav',get_template_directory_uri().'/css/slicknav.css');
+	wp_register_style('responsiveslides',get_template_directory_uri().'/css/responsiveslides.css');
+	wp_register_style('responsive',get_template_directory_uri().'/css/responsive.css');
+	
+	
+	wp_enqueue_style('awesome');
+	wp_enqueue_style('normalize');
+	wp_enqueue_style('slicknav');
+	wp_enqueue_style('responsiveslides');
+	wp_enqueue_style('responsive');
+	
+}
+add_action('wp_enqueue_scripts','css_enqueue');
 	
 
 /* Redux Freamwork */
-	
 require_once('lib/ReduxCore/framework.php');
 require_once('lib/Sample/config.php');
-
 
 /* custom metabox */
 require_once('metabox/init.php');
 require_once('metabox/functions.php');
-
 
 /* Add sortcode file */
 require_once('shortcodes.php');
