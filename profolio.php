@@ -19,9 +19,9 @@ get_header(); ?>
 								<p><?php the_content(); ?></p>
 							</div>
 						</div>
-						<?php endwhile; ?>
+					<?php endwhile; ?>
 				</div>
 			</div>
 		</div>
 	</section>
-<?php get_footer(); ?>	
+<?php get_footer(); ?>

@@ -23,7 +23,7 @@
 								<p><?php echo get_post_meta(get_the_ID(),'info',true); ?></p>
 							</div>
 							<div class="readmore">
-								<a href="<?php the_permalink(); ?>">read more..</a>
+								<a href="<?php the_permalink(); ?>">Read more..</a>
 							</div>
 						</div>
 						<?php endwhile; ?>
@@ -31,6 +31,7 @@
 				</div>
 				<?php get_sidebar(); ?>
 			</div>
+			<!-- Pagination -->
 			<div class="pagination">
 				<ul>
 					<?php 
