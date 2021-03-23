@@ -31,6 +31,21 @@ class BlockChain {
         block.hash = block.calculateHash();
         this.chain.push(block);
     }
+
+    isValidBlockChain(){
+        for (let i=1; i<this.chain.length; i++){
+            let currentBlock = this.chain[i];
+            let prevBlock = this.chain[i-1];
+
+            if(currentBlock.hash !== currentBlock.calculateHash()){
+                return false;
+            }
+            if(currentBlock.hash !== prevBlock.hash){
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
 const block = new Block('2021-03-23', {total:45000});
@@ -38,4 +53,7 @@ const block = new Block('2021-03-23', {total:45000});
 
 const blockchain = new BlockChain()
 blockchain.addBlock(block);
-console.log(blockchain);
+console.log(blockchain.isValidBlockChain());
+
+blockchain.chain[1].data = "Hacked";
+console.log(blockchain.isValidBlockChain());
