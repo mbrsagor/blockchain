@@ -6,10 +6,11 @@ class Block {
         this.data = data;
         this.previousHash = previousHash;
         this.hash = this.calculateHash();
+        this.nonce = 0;
     }
 
     calculateHash(){
-        return sha256(this.timestamp + JSON.stringify(this.data) + this.previousHash).toString();
+        return sha256(this.timestamp + JSON.stringify(this.data) + this.previousHash + this.nonce).toString();
     }
 }
 
@@ -54,6 +55,8 @@ const block = new Block('2021-03-23', {total:45000});
 const blockchain = new BlockChain()
 blockchain.addBlock(block);
 console.log(blockchain.isValidBlockChain());
+console.log(blockchain);
 
 blockchain.chain[1].data = "Hacked";
 console.log(blockchain.isValidBlockChain());
+console.log(blockchain);
