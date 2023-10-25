@@ -6,6 +6,6 @@
   "author": "mbr-sagor",
   "license": "MIT",
   "dependencies": {
-    "crypto-js": "^4.0.0"
+    "crypto-js": "^4.2.0"
   }
 }
